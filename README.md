@@ -35,7 +35,7 @@ Day 3 project/
 ├── meta.pkl             → dropdown options + accuracy metrics
 ├── requirements.txt
 ├── charts/              → evaluation chart images
-└── archive/             → raw CSV datasets
+└── data/             → raw CSV datasets
 ```
 
 ---

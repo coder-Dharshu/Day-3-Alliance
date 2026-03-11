@@ -21,7 +21,7 @@ def extract_num(series):
     return pd.to_numeric(series.astype(str).str.extract(r'([\d.]+)')[0], errors='coerce')
 
 # Dataset 1
-d1 = pd.read_csv('archive/car data.csv')
+d1 = pd.read_csv('data/car data.csv')
 d1 = d1.rename(columns={'Car_Name':'name','Year':'year','Selling_Price':'selling_price_lakh','Kms_Driven':'km_driven','Fuel_Type':'fuel','Seller_Type':'seller_type','Transmission':'transmission','Owner':'owner'})
 d1['selling_price'] = d1['selling_price_lakh'] * 1e5
 d1['brand'] = d1['name'].str.split().str[0]
@@ -29,18 +29,18 @@ d1['mileage_kmpl'] = np.nan; d1['engine_cc'] = np.nan; d1['max_power_bhp'] = np.
 d1['owner'] = d1['owner'].map({0:'First Owner',1:'Second Owner',2:'Third Owner',3:'Fourth & Above Owner'}).fillna('First Owner')
 
 # Dataset 2
-d2 = pd.read_csv('archive/CAR DETAILS FROM CAR DEKHO.csv')
+d2 = pd.read_csv('data/CAR DETAILS FROM CAR DEKHO.csv')
 d2['brand'] = d2['name'].str.split().str[0]
 d2['mileage_kmpl'] = np.nan; d2['engine_cc'] = np.nan; d2['max_power_bhp'] = np.nan; d2['seats'] = 5.0
 
 # Dataset 3
-d3 = pd.read_csv('archive/Car details v3.csv')
+d3 = pd.read_csv('data/Car details v3.csv')
 d3['brand'] = d3['name'].str.split().str[0]
 d3['mileage_kmpl'] = extract_num(d3['mileage']); d3['engine_cc'] = extract_num(d3['engine']); d3['max_power_bhp'] = extract_num(d3['max_power'])
 d3['seats'] = d3['seats'].fillna(5.0)
 
 # Dataset 4
-d4 = pd.read_csv('archive/car details v4.csv')
+d4 = pd.read_csv('data/car details v4.csv')
 d4 = d4.rename(columns={'Make':'brand','Price':'selling_price','Year':'year','Kilometer':'km_driven','Fuel Type':'fuel','Transmission':'transmission','Owner':'owner','Seller Type':'seller_type','Seating Capacity':'seats'})
 d4['name'] = d4['brand'] + ' ' + d4['Model'].astype(str)
 d4['engine_cc'] = extract_num(d4['Engine']); d4['max_power_bhp'] = extract_num(d4['Max Power']); d4['mileage_kmpl'] = np.nan
