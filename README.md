@@ -163,5 +163,3 @@ python train_model.py
 | car details v4.csv                 | CarDekho V4 |
 
 ---
-
-*Built by Darshan as a Day 3 Machine Learning project.*
